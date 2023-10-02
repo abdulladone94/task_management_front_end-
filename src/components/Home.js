@@ -28,19 +28,30 @@ const Home = () => {
             </tr>
           </thead>
           <tbody>
-            {tasks.map((task, id) => (
-              <tr key={id}>
-                <th>{task.task}</th>
-                <th>{task.date}</th>
-                <th>{task.detail}</th>
-                <th>
-                  <div className="d-flex flex-column flex-md-row align-items-center">
-                    <button className="m-1 btn btn-primary">Update</button>
-                    <button className="m-1 btn btn-danger">Delete</button>
-                  </div>
-                </th>
+            {Array.isArray(tasks) && tasks.length > 0 ? (
+              tasks.map((task, id) => (
+                <tr key={id}>
+                  <th>{task.task}</th>
+                  <th>{task.date}</th>
+                  <th>{task.detail}</th>
+                  <th>
+                    <div className="d-flex flex-column flex-md-row align-items-center">
+                      <Link
+                        to={`update/${task.id}`}
+                        className="m-1 btn btn-primary"
+                      >
+                        Update
+                      </Link>
+                      <button className="m-1 btn btn-danger">Delete</button>
+                    </div>
+                  </th>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4">No tasks found.</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
