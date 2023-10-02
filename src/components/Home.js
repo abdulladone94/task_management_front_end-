@@ -12,6 +12,15 @@ const Home = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete("http://localhost:8081/task/" + id);
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className="p-2 p-md-5">
       <div className="bg-white rounded w-md-75 ">
@@ -42,7 +51,12 @@ const Home = () => {
                       >
                         Update
                       </Link>
-                      <button className="m-1 btn btn-danger">Delete</button>
+                      <button
+                        onClick={(e) => handleDelete(task.id)}
+                        className="m-1 btn btn-danger"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </th>
                 </tr>
