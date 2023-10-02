@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [tasks, setTask] = useState([]);
@@ -14,7 +15,9 @@ const Home = () => {
   return (
     <div className="p-2 p-md-5">
       <div className="bg-white rounded w-md-75 ">
-        <button className="mb-3 btn btn-success col-md-3">Add +</button>
+        <Link to={"create"} className="mb-3 btn btn-success col-md-3">
+          Add +
+        </Link>
         <table className="table" style={{ tableLayout: "fixed" }}>
           <thead>
             <tr>
